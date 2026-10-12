@@ -1,0 +1,6 @@
+{
+  "name": "Fantasy RPG: Open World Adventure",
+  "description": "An open world Roblox-style RPG with 5 zones, train railway circuit, monster drops, crafting, tree cutting & mining, home building, and skill trees.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}

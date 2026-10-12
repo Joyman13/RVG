@@ -1,0 +1,234 @@
+@import "tailwindcss";
+
+@layer base {
+  * {
+    user-select: none;
+    -webkit-user-select: none;
+    touch-action: manipulation;
+  }
+  body, html {
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    font-family: 'Fredoka', 'Inter', system-ui, sans-serif;
+    background-color: #020617;
+  }
+}
+
+#gameCanvas {
+  width: 100%;
+  height: 100%;
+  display: block;
+  touch-action: none;
+}
+
+.roblox-panel {
+  background: rgba(15, 23, 42, 0.82);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  border: 2px solid rgba(255, 255, 255, 0.18);
+  box-shadow: 0 12px 30px -5px rgba(0, 0, 0, 0.6), 0 8px 12px -6px rgba(0, 0, 0, 0.4);
+}
+
+.roblox-button {
+  background: linear-gradient(180deg, #3b82f6 0%, #1d4ed8 100%);
+  border: 2px solid #60a5fa;
+  box-shadow: 0 4px 0 #1e40af;
+  transition: all 0.1s ease;
+}
+.roblox-button:active {
+  transform: translateY(3px);
+  box-shadow: 0 1px 0 #1e40af;
+}
+
+.roblox-button-green {
+  background: linear-gradient(180deg, #22c55e 0%, #15803d 100%);
+  border: 2px solid #4ade80;
+  box-shadow: 0 4px 0 #166534;
+  transition: all 0.1s ease;
+}
+.roblox-button-green:active {
+  transform: translateY(3px);
+  box-shadow: 0 1px 0 #166534;
+}
+
+.roblox-button-gold {
+  background: linear-gradient(180deg, #eab308 0%, #a16207 100%);
+  border: 2px solid #fde047;
+  box-shadow: 0 4px 0 #713f12;
+  transition: all 0.1s ease;
+}
+.roblox-button-gold:active {
+  transform: translateY(3px);
+  box-shadow: 0 1px 0 #713f12;
+}
+
+.roblox-button-red {
+  background: linear-gradient(180deg, #ef4444 0%, #b91c1c 100%);
+  border: 2px solid #fca5a5;
+  box-shadow: 0 4px 0 #7f1d1d;
+  transition: all 0.1s ease;
+}
+.roblox-button-red:active {
+  transform: translateY(3px);
+  box-shadow: 0 1px 0 #7f1d1d;
+}
+
+.roblox-button-purple {
+  background: linear-gradient(180deg, #a855f7 0%, #7e22ce 100%);
+  border: 2px solid #c084fc;
+  box-shadow: 0 4px 0 #581c87;
+  transition: all 0.1s ease;
+}
+.roblox-button-purple:active {
+  transform: translateY(3px);
+  box-shadow: 0 1px 0 #581c87;
+}
+
+.roblox-button-amber {
+  background: linear-gradient(180deg, #f59e0b 0%, #b45309 100%);
+  border: 2px solid #fbbf24;
+  box-shadow: 0 4px 0 #78350f;
+  transition: all 0.1s ease;
+}
+.roblox-button-amber:active {
+  transform: translateY(3px);
+  box-shadow: 0 1px 0 #78350f;
+}
+
+.hb {
+  position: relative;
+  width: 52px;
+  height: 52px;
+  border-radius: 14px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  cursor: pointer;
+}
+.hb .lbl {
+  font-size: 9px;
+  font-weight: 700;
+}
+.hb .key {
+  position: absolute;
+  top: 2px;
+  left: 4px;
+  font-size: 9px;
+  font-weight: 800;
+  opacity: 0.7;
+}
+.hb .cd {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  height: 0;
+  background: rgba(0, 0, 0, 0.65);
+  pointer-events: none;
+}
+.hb .cnt {
+  position: absolute;
+  bottom: 2px;
+  right: 4px;
+  font-size: 10px;
+  font-weight: 800;
+}
+
+@media (max-width: 640px) {
+  .hb {
+    width: 44px;
+    height: 48px;
+  }
+  .hb .lbl {
+    display: none;
+  }
+}
+
+.floating-text {
+  position: absolute;
+  font-weight: 800;
+  pointer-events: none;
+  animation: floatUp 1s ease-out forwards;
+  text-shadow: 2px 2px 0 #000, -2px -2px 0 #000, 2px -2px 0 #000, -2px 2px 0 #000;
+  transform: translate(-50%, -50%);
+  z-index: 50;
+}
+
+@keyframes floatUp {
+  0% { opacity: 1; margin-top: 0; }
+  50% { margin-top: -30px; }
+  100% { opacity: 0; margin-top: -65px; }
+}
+
+.toast-anim {
+  animation: toastIn 0.25s ease-out, toastOut 0.4s ease-in 2.6s forwards;
+}
+
+@keyframes toastIn {
+  from { opacity: 0; transform: translateY(-10px); }
+  to { opacity: 1; transform: none; }
+}
+
+@keyframes toastOut {
+  to { opacity: 0; transform: translateY(-8px); }
+}
+
+#hitVignette {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 25;
+  opacity: 0;
+  box-shadow: inset 0 0 120px 40px rgba(220, 38, 38, 0.75);
+  transition: opacity 0.25s;
+}
+
+#zoneBanner {
+  position: fixed;
+  top: 18%;
+  left: 50%;
+  transform: translate(-50%, 0);
+  pointer-events: none;
+  z-index: 30;
+  opacity: 0;
+  text-align: center;
+  font-weight: 800;
+  font-size: clamp(22px, 4.5vw, 42px);
+  letter-spacing: 0.05em;
+  color: #fde68a;
+  text-shadow: 0 4px 0 #78350f, 0 0 20px rgba(251, 191, 36, 0.6);
+  white-space: nowrap;
+}
+
+#zoneBanner.show {
+  animation: bannerAnim 3.2s ease-out forwards;
+}
+
+@keyframes bannerAnim {
+  0% { opacity: 0; transform: translate(-50%, 14px) scale(0.92); }
+  15% { opacity: 1; transform: translate(-50%, 0) scale(1); }
+  80% { opacity: 1; }
+  100% { opacity: 0; transform: translate(-50%, -8px) scale(1.02); }
+}
+
+/* Custom scrollbars for inventory & craft */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+::-webkit-scrollbar-track {
+  background: rgba(15, 23, 42, 0.5);
+  border-radius: 8px;
+}
+::-webkit-scrollbar-thumb {
+  background: rgba(148, 163, 184, 0.4);
+  border-radius: 8px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(251, 191, 36, 0.7);
+}
